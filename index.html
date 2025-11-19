@@ -19,7 +19,7 @@
                     <div class="form-group">
                         <label class="form-label" for="roleSelect">Rol</label>
                         <select id="roleSelect" class="form-control" required>
-                            <option value="">Seleccione un rol</option>
+                            <option value="" disabled selected hidden>Seleccione un rol</option>
                             <option value="student">Estudiante</option>
                             <option value="coordinator">Coordinador</option>
                             <option value="director">Director</option>
@@ -56,8 +56,7 @@
             <aside class="sidebar">
                 <ul class="sidebar-menu">
                     <li><a href="#" onclick="showStudentSection('projects')" class="active">Mis Proyectos</a></li>
-                    <li><a href="#" onclick="showStudentSection('register')">Registrar Proyecto</a></li>
-                    <li><a href="#" onclick="showStudentSection('deliverables')">Cargar Entregables</a></li>
+                    <li><a href="#" onclick="showStudentSection('feedback')">Ver Retroalimentación</a></li>
                 </ul>
             </aside>
             <main class="main-content">
@@ -67,6 +66,10 @@
                         <button class="btn btn--primary" onclick="openRegisterModal()">Nuevo Proyecto</button>
                     </div>
                     <div id="studentProjectsList" class="projects-grid"></div>
+                </div>
+                <div id="studentFeedback" class="section">
+                    <h2>Retroalimentación y Observaciones</h2>
+                    <div id="studentFeedbackList"></div>
                 </div>
             </main>
         </div>
@@ -86,7 +89,7 @@
                 <ul class="sidebar-menu">
                     <li><a href="#" onclick="showCoordinatorSection('overview')" class="active">Resumen</a></li>
                     <li><a href="#" onclick="showCoordinatorSection('projects')">Todos los Proyectos</a></li>
-                    <li><a href="#" onclick="showCoordinatorSection('assign')">Asignar Jurados</a></li>
+                    <li><a href="#" onclick="showCoordinatorSection('assign')">Asignar Directores &amp; Jurados</a></li>
                     <li><a href="#" onclick="showCoordinatorSection('schedule')">Programar Fechas</a></li>
                     <li><a href="#" onclick="showCoordinatorSection('certificates')">Generar Actas</a></li>
                 </ul>
@@ -95,19 +98,19 @@
                 <div id="coordinatorOverview" class="section active">
                     <h2>Resumen General</h2>
                     <div class="stats-grid">
-                        <div class="stat-card">
+                        <div class="stat-card" style="border-top: 4px solid var(--color-primary);">
                             <div class="stat-value" id="totalProjects">0</div>
                             <div class="stat-label">Total Proyectos</div>
                         </div>
-                        <div class="stat-card">
+                        <div class="stat-card" style="border-top: 4px solid var(--color-warning);">
                             <div class="stat-value" id="pendingProjects">0</div>
                             <div class="stat-label">Pendientes</div>
                         </div>
-                        <div class="stat-card">
+                        <div class="stat-card" style="border-top: 4px solid var(--color-info);">
                             <div class="stat-value" id="reviewProjects">0</div>
                             <div class="stat-label">En Revisión</div>
                         </div>
-                        <div class="stat-card">
+                        <div class="stat-card" style="border-top: 4px solid var(--color-success);">
                             <div class="stat-value" id="approvedProjects">0</div>
                             <div class="stat-label">Aprobados</div>
                         </div>
@@ -164,6 +167,8 @@
                 <ul class="sidebar-menu">
                     <li><a href="#" onclick="showDirectorSection('projects')" class="active">Proyectos Asignados</a></li>
                     <li><a href="#" onclick="showDirectorSection('review')">Revisar Entregables</a></li>
+                    <li><a href="#" onclick="showDirectorSection('observations')">Emitir Observaciones</a></li>
+                    <li><a href="#" onclick="showDirectorSection('history')">Historial de Revisiones</a></li>
                 </ul>
             </aside>
             <main class="main-content">
@@ -174,6 +179,14 @@
                 <div id="directorReview" class="section">
                     <h2>Revisar Entregables</h2>
                     <div id="directorReviewList"></div>
+                </div>
+                <div id="directorObservations" class="section">
+                    <h2>Emitir Observaciones Generales</h2>
+                    <div id="directorObservationsForm"></div>
+                </div>
+                <div id="directorHistory" class="section">
+                    <h2>Historial de Revisiones</h2>
+                    <div id="directorHistoryList"></div>
                 </div>
             </main>
         </div>
@@ -238,15 +251,7 @@
                         <label class="form-label">Autores</label>
                         <input type="text" id="projectAuthors" class="form-control" required>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">Director</label>
-                        <select id="projectDirector" class="form-control" required>
-                            <option value="">Seleccione un director</option>
-                            <option value="Dr. García">Dr. García</option>
-                            <option value="Dra. Fernández">Dra. Fernández</option>
-                            <option value="Dr. López">Dr. López</option>
-                        </select>
-                    </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn--outline" onclick="closeModal('registerModal')">Cancelar</button>
                         <button type="submit" class="btn btn--primary">Registrar Proyecto</button>
@@ -268,7 +273,7 @@
                     <div class="form-group">
                         <label class="form-label">Fase del Proyecto</label>
                         <select id="deliverablePhase" class="form-control" required>
-                            <option value="">Seleccione una fase</option>
+                            <option value="" disabled selected hidden></option>Seleccione una fase</option>
                             <option value="Anteproyecto">Anteproyecto</option>
                             <option value="Desarrollo">Desarrollo</option>
                             <option value="Sustentación">Sustentación</option>
@@ -291,39 +296,30 @@
         </div>
     </div>
 
-    <div id="observationModal" class="modal">
+    <!-- Modal: Revisión Entregable (Director) -->
+    <div id="reviewDeliverableModal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3>Revisión de Entregable</h3>
+                <button class="modal-close" onclick="closeModal('reviewDeliverableModal')">&times;</button>
+            </div>
+            <div class="modal-body" id="directorReviewDeliverableBody"></div>
+        </div>
+    </div>
+
+    <!-- Modal: Emitir Observación General (Director) -->
+    <div id="observationGeneralModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Agregar Observación</h3>
-                <button class="modal-close" onclick="closeModal('observationModal')">&times;</button>
+                <h3>Emitir Observación General</h3>
+                <button class="modal-close" onclick="closeModal('observationGeneralModal')">&times;</button>
             </div>
-            <div class="modal-body">
-                <form id="addObservationForm">
-                    <input type="hidden" id="observationProjectId">
-                    <input type="hidden" id="observationDeliverableId">
-                    <div class="form-group">
-                        <label class="form-label">Observación</label>
-                        <textarea id="observationText" class="form-control" rows="4" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Acción</label>
-                        <select id="observationAction" class="form-control" required>
-                            <option value="approve">Aprobar</option>
-                            <option value="request_changes">Solicitar Ajustes</option>
-                            <option value="reject">Rechazar</option>
-                        </select>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn--outline" onclick="closeModal('observationModal')">Cancelar</button>
-                        <button type="submit" class="btn btn--primary">Enviar Observación</button>
-                    </div>
-                </form>
-            </div>
+            <div class="modal-body" id="directorObservationGeneralBody"></div>
         </div>
     </div>
 
     <div id="evaluationModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content modal-large">
             <div class="modal-header">
                 <h3>Evaluar Proyecto</h3>
                 <button class="modal-close" onclick="closeModal('evaluationModal')">&times;</button>
@@ -332,16 +328,56 @@
                 <form id="evaluateProjectForm">
                     <input type="hidden" id="evaluationProjectId">
                     <div class="form-group">
-                        <label class="form-label">Calificación (0-100)</label>
+                        <label class="form-label">Calificación (0-100) *</label>
                         <input type="number" id="evaluationGrade" class="form-control" min="0" max="100" required>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Comentarios</label>
-                        <textarea id="evaluationComments" class="form-control" rows="4" required></textarea>
+                        <label class="form-label">Comentarios Generales de la Evaluación *</label>
+                        <textarea id="evaluationComments" class="form-control" rows="4" placeholder="Comentarios sobre el proyecto en general..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Fortalezas del Proyecto</label>
+                        <textarea id="evaluationStrengths" class="form-control" rows="3" placeholder="Aspectos positivos y fortalezas del trabajo..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Áreas de Mejora</label>
+                        <textarea id="evaluationImprovements" class="form-control" rows="3" placeholder="Aspectos que podrían mejorarse..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Recomendaciones</label>
+                        <textarea id="evaluationRecommendations" class="form-control" rows="3" placeholder="Recomendaciones para trabajo futuro..."></textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn--outline" onclick="closeModal('evaluationModal')">Cancelar</button>
-                        <button type="submit" class="btn btn--primary">Registrar Evaluación</button>
+                        <button type="submit" class="btn btn--primary">Registrar Calificación Final</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="assignDirectorModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Asignar Director al Proyecto</h3>
+                <button class="modal-close" onclick="closeModal('assignDirectorModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="assignDirectorForm">
+                    <input type="hidden" id="assignDirectorProjectId">
+                    <div class="form-group">
+                        <label class="form-label">Seleccionar Director</label>
+                        <select id="directorSelect" class="form-control" required>
+                            <option value="" disabled selected hidden>Seleccione un director</option>
+                            <option value="Dr. López">Dr. López</option>
+                            <option value="Dra. Fernández">Dra. Fernández</option>
+                            <option value="Dr. García">Dr. García</option>
+                            <option value="Dra. Ramírez">Dra. Ramírez</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn--outline" onclick="closeModal('assignDirectorModal')">Cancelar</button>
+                        <button type="submit" class="btn btn--primary">Asignar Director</button>
                     </div>
                 </form>
             </div>
@@ -360,10 +396,10 @@
                     <div class="form-group">
                         <label class="form-label">Seleccionar Jurados (mínimo 2)</label>
                         <div class="checkbox-group">
-                            <label><input type="checkbox" name="jury" value="Dra. López"> Dra. López</label>
-                            <label><input type="checkbox" name="jury" value="Dr. Martínez"> Dr. Martínez</label>
-                            <label><input type="checkbox" name="jury" value="Dra. Sánchez"> Dra. Sánchez</label>
-                            <label><input type="checkbox" name="jury" value="Dr. Ramírez"> Dr. Ramírez</label>
+                            <label><input type="checkbox" name="jury" value="Dra. Martínez"> Dra. Martínez</label>
+                            <label><input type="checkbox" name="jury" value="Dr. Rodríguez"> Dr. Rodríguez</label>
+                            <label><input type="checkbox" name="jury" value="Dr. Sánchez"> Dr. Sánchez</label>
+                            <label><input type="checkbox" name="jury" value="Dra. Torres"> Dra. Torres</label>
                         </div>
                     </div>
                     <div class="modal-footer">
