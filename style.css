@@ -1159,11 +1159,29 @@ textarea.form-control {
   border-radius: var(--radius-lg);
   padding: var(--space-20);
   transition: all var(--duration-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--color-primary);
+  opacity: 0;
+  transition: opacity var(--duration-normal);
 }
 
 .project-card:hover {
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
+}
+
+.project-card:hover::before {
+  opacity: 1;
 }
 
 .project-title {
@@ -1243,6 +1261,13 @@ textarea.form-control {
   border-radius: var(--radius-lg);
   padding: var(--space-24);
   text-align: center;
+  transition: all var(--duration-normal);
+  cursor: default;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 
 .stat-value {
@@ -1538,6 +1563,14 @@ textarea.form-control {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: all var(--duration-fast);
+  border-left: 3px solid transparent;
+}
+
+.deliverable-item:hover {
+  background: var(--color-secondary-hover);
+  border-left-color: var(--color-primary);
+  transform: translateX(4px);
 }
 
 .deliverable-info {
@@ -1584,6 +1617,104 @@ textarea.form-control {
 
 .observation-text {
   color: var(--color-text);
+}
+
+/* Director Review Modal */
+.deliverable-preview {
+  background: var(--color-secondary);
+  padding: var(--space-20);
+  border-radius: var(--radius-base);
+  margin-bottom: var(--space-16);
+  border: 1px solid var(--color-border);
+  max-height: 300px;
+  overflow-y: auto;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+}
+
+.deliverable-info-section {
+  margin-bottom: var(--space-20);
+}
+
+.deliverable-info-section h4 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-12);
+  color: var(--color-text);
+}
+
+.deliverable-info-section p {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-8);
+}
+
+.action-buttons {
+  display: flex;
+  gap: var(--space-8);
+  margin-top: var(--space-16);
+  flex-wrap: wrap;
+}
+
+.btn--warning {
+  background: var(--color-warning);
+  color: var(--color-white);
+}
+
+.btn--warning:hover {
+  opacity: 0.9;
+}
+
+/* History Table */
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--space-16);
+}
+
+.history-table th,
+.history-table td {
+  padding: var(--space-12);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.history-table th {
+  background: var(--color-secondary);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+}
+
+.history-table tbody tr:hover {
+  background: var(--color-secondary);
+  cursor: pointer;
+}
+
+.action-badge {
+  display: inline-block;
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.action-badge--approved {
+  background: rgba(var(--color-success-rgb), 0.15);
+  color: var(--color-success);
+}
+
+.action-badge--adjustments {
+  background: rgba(var(--color-warning-rgb), 0.15);
+  color: var(--color-warning);
+}
+
+.action-badge--rejected {
+  background: rgba(var(--color-error-rgb), 0.15);
+  color: var(--color-error);
+}
+
+.action-badge--comment {
+  background: rgba(var(--color-info-rgb), 0.15);
+  color: var(--color-info);
 }
 
 /* Responsive */
@@ -1636,6 +1767,33 @@ textarea.form-control {
 
 @keyframes spin {
   to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.project-card,
+.stat-card {
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Progress bar animation */
+@keyframes progressAnimation {
+  from {
+    width: 0;
+  }
+}
+
+.project-card [style*="background: var(--color-primary)"] {
+  animation: progressAnimation 1s ease-out;
 }
 
 /* Empty State */
