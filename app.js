@@ -1,75 +1,299 @@
-// Data Storage (In-Memory)
 let currentUser = null;
 let projects = [
   {
     id: 1,
     title: "Sistema de gestión académica",
-    description: "Desarrollo de un sistema web para gestionar procesos académicos",
-    objectives: "Automatizar procesos, mejorar eficiencia, centralizar información",
-    authors: "Juan Pérez",
+    description: "Plataforma web para gestión de cursos y calificaciones",
+    objectives: "Desarrollar plataforma completa, mejorar procesos académicos",
+    authors: "Juan Pérez, Andrea López",
     student: "Juan Pérez",
-    director: "Dr. García",
-    jury: [],
+    director: "Dr. López",
+    jury: ["Dra. Martínez", "Dr. Rodríguez"],
     phase: "Anteproyecto",
-    status: "Pendiente",
-    deliverables: [],
-    observations: [],
-    evaluations: [],
-    defenseDate: null,
-    defenseLocation: null,
-    createdDate: "2025-10-15"
-  },
-  {
-    id: 2,
-    title: "Aplicación móvil de comercio electrónico",
-    description: "App para compra y venta de productos locales",
-    objectives: "Conectar vendedores locales con compradores",
-    authors: "María González",
-    student: "María González",
-    director: "Dra. Fernández",
-    jury: ["Dra. López", "Dr. Martínez"],
-    phase: "Desarrollo",
     status: "En Revisión",
+    horaDefensa: "10:00",
+    lugar: "Sala 101",
     deliverables: [
       {
         id: 1,
         name: "Propuesta inicial",
         phase: "Anteproyecto",
-        fileName: "propuesta.pdf",
-        uploadDate: "2025-10-20",
-        status: "Aprobado"
+        fileName: "propuesta_v1.pdf",
+        uploadDate: "2025-10-15",
+        status: "Aprobado",
+        comentariosDirector: [
+          {
+            contenido: "Excelente propuesta. Los objetivos están bien definidos.",
+            fecha: "2025-10-16",
+            sugerencias: "Detallar el cronograma más específicamente",
+            estado: "Aprobado"
+          }
+        ],
+        comentariosJurado: [
+          {
+            contenido: "Idea interesante y viable. Buen potencial de impacto.",
+            fecha: "2025-10-18",
+            tipo: "satisfactorio"
+          }
+        ]
+      },
+      {
+        id: 2,
+        name: "Marco teórico",
+        phase: "Anteproyecto",
+        fileName: "marco_teorico_v1.pdf",
+        uploadDate: "2025-10-18",
+        status: "Aprobado",
+        comentariosDirector: [
+          {
+            contenido: "Buena revisión de literatura. Bases sólidas para el proyecto.",
+            fecha: "2025-10-19",
+            sugerencias: "",
+            estado: "Aprobado"
+          }
+        ],
+        comentariosJurado: [
+          {
+            contenido: "Marco teórico completo y bien estructurado.",
+            fecha: "2025-10-20",
+            tipo: "satisfactorio"
+          }
+        ]
       }
     ],
     observations: [
       {
         id: 1,
-        author: "Dra. Fernández",
-        text: "Excelente propuesta inicial. Continuar con el desarrollo.",
-        date: "2025-10-21",
-        action: "approve"
+        titulo: "Incluir comparativa de tecnologías",
+        contenido: "Es importante comparar las diferentes tecnologías disponibles y justificar la selección",
+        tipo: "Tecnología",
+        prioridad: "Alta",
+        fecha: "2025-10-17",
+        emisor: "Dr. López"
+      }
+    ],
+    evaluations: [
+      {
+        id: 1,
+        evaluator: "Dra. Martínez",
+        grade: 85,
+        comments: "Excelente proyecto con implementación completa. Buena arquitectura y documentación clara.",
+        fortalezas: "Buena arquitectura, interfaz intuitiva, documentación clara",
+        mejoras: "Podría mejorar el rendimiento en consultas grandes",
+        recomendaciones: "Considerar agregar más módulos de reportería",
+        date: "2025-10-21"
+      }
+    ],
+    defenseDate: "2025-12-15",
+    defenseLocation: null,
+    createdDate: "2025-10-10"
+  },
+  {
+    id: 2,
+    title: "App de seguimiento de salud",
+    description: "Aplicación móvil para monitoreo de parámetros de salud",
+    objectives: "Crear app intuitiva, usar IA para alertas, sincronizar con dispositivos",
+    authors: "María González, Ana Martínez",
+    student: "María González",
+    director: "Dra. Fernández",
+    jury: ["Dr. Sánchez"],
+    phase: "Desarrollo",
+    status: "En Revisión",
+    horaDefensa: null,
+    lugar: null,
+    deliverables: [
+      {
+        id: 3,
+        name: "Propuesta inicial",
+        phase: "Anteproyecto",
+        fileName: "propuesta_salud_v1.pdf",
+        uploadDate: "2025-11-01",
+        status: "Aprobado",
+        comentariosDirector: [
+          {
+            contenido: "Buena idea. Revisar requisitos de privacidad y seguridad de datos",
+            fecha: "2025-11-02",
+            sugerencias: "Incluir análisis de cumplimiento GDPR",
+            estado: "Aprobado"
+          }
+        ],
+        comentariosJurado: []
+      },
+      {
+        id: 4,
+        name: "Documento avance 1",
+        phase: "Desarrollo",
+        fileName: "avance1_salud.pdf",
+        uploadDate: "2025-11-10",
+        status: "Pendiente",
+        comentariosDirector: [
+          {
+            contenido: "Falta especificar los algoritmos de IA para las alertas",
+            fecha: "2025-11-11",
+            sugerencias: "Agregar diagramas de flujo y pseudocódigo de algoritmos",
+            estado: "Pendiente"
+          }
+        ],
+        comentariosJurado: []
+      }
+    ],
+    observations: [
+      {
+        id: 2,
+        titulo: "Evaluar impacto regulatorio",
+        contenido: "La aplicación manejará datos de salud sensibles. Necesita evaluación de impacto regulatorio",
+        tipo: "Normativa",
+        prioridad: "Alta",
+        fecha: "2025-11-03",
+        emisor: "Dra. Fernández"
       }
     ],
     evaluations: [],
-    defenseDate: "2025-12-15T10:00",
-    defenseLocation: "Aula 301",
-    createdDate: "2025-10-10"
+    defenseDate: null,
+    defenseLocation: null,
+    createdDate: "2025-11-01"
+  },
+  {
+    id: 3,
+    title: "Sistema de recomendación de libros",
+    description: "Plataforma web con algoritmos de ML para recomendar libros",
+    objectives: "Implementar sistema de filtrado colaborativo, mejorar experiencia de usuario",
+    authors: "Carlos Rodríguez",
+    student: "Carlos Rodríguez",
+    director: null,
+    jury: [],
+    phase: "Anteproyecto",
+    status: "Pendiente",
+    horaDefensa: null,
+    lugar: null,
+    deliverables: [],
+    observations: [],
+    evaluations: [],
+    defenseDate: null,
+    defenseLocation: null,
+    createdDate: "2025-11-05"
+  },
+  {
+    id: 4,
+    title: "Chatbot para atención al cliente",
+    description: "Asistente virtual con procesamiento de lenguaje natural",
+    objectives: "Automatizar respuestas frecuentes, mejorar experiencia usuario, reducir carga operativa",
+    authors: "Laura Díaz, Pedro Gómez",
+    student: "Laura Díaz",
+    director: "Dr. García",
+    jury: ["Dra. Martínez", "Dr. Sánchez"],
+    phase: "Sustentación",
+    status: "Finalizado",
+    horaDefensa: "14:30",
+    lugar: "Auditorio A",
+    deliverables: [
+      {
+        id: 5,
+        name: "Propuesta inicial",
+        phase: "Anteproyecto",
+        fileName: "propuesta_chatbot.pdf",
+        uploadDate: "2025-09-20",
+        status: "Aprobado",
+        comentariosDirector: [
+          {
+            contenido: "Excelente propuesta. Proceder a desarrollo",
+            fecha: "2025-09-22",
+            sugerencias: "",
+            estado: "Aprobado"
+          }
+        ],
+        comentariosJurado: [
+          {
+            contenido: "Proyecto viable y con buen potencial comercial",
+            fecha: "2025-09-23",
+            tipo: "satisfactorio"
+          }
+        ]
+      },
+      {
+        id: 6,
+        name: "Código fuente y documentación",
+        phase: "Sustentación",
+        fileName: "codigo_chatbot_final.zip",
+        uploadDate: "2025-11-25",
+        status: "Aprobado",
+        comentariosDirector: [
+          {
+            contenido: "Código bien estructurado, documentación completa. Aprobado para sustentación",
+            fecha: "2025-11-26",
+            sugerencias: "",
+            estado: "Aprobado"
+          }
+        ],
+        comentariosJurado: [
+          {
+            contenido: "Implementación profesional. Cumple todos los requisitos",
+            fecha: "2025-11-27",
+            tipo: "satisfactorio"
+          }
+        ]
+      }
+    ],
+    observations: [
+      {
+        id: 3,
+        titulo: "Implementación de seguridad",
+        contenido: "Excelente implementación de medidas de seguridad en la comunicación",
+        tipo: "General",
+        prioridad: "Media",
+        fecha: "2025-11-26",
+        emisor: "Dr. García"
+      }
+    ],
+    evaluations: [
+      {
+        id: 1,
+        evaluator: "Dra. Martínez",
+        grade: 95,
+        comments: "Proyecto excepcional. Muy profesional y completo. Excelente arquitectura y documentación.",
+        fortalezas: "Código limpio, buena arquitectura, interfaz amigable, documentación excelente",
+        mejoras: "Podría expandirse a más idiomas en el futuro",
+        recomendaciones: "Considerar comercializar la solución",
+        date: "2025-11-27"
+      },
+      {
+        id: 2,
+        evaluator: "Dr. Sánchez",
+        grade: 92,
+        comments: "Trabajo muy bien ejecutado con resultados sólidos.",
+        fortalezas: "Buen análisis del problema, solución efectiva, buenas pruebas",
+        mejoras: "Mejorar la documentación de APIs",
+        recomendaciones: "Publicar resultados en conferencia",
+        date: "2025-11-27"
+      }
+    ],
+    defenseDate: "2025-11-28T14:30",
+    defenseLocation: "Auditorio A",
+    createdDate: "2025-09-15"
   }
 ];
 
 const users = [
   { id: 1, username: "estudiante1", password: "123", role: "student", name: "Juan Pérez" },
   { id: 2, username: "estudiante2", password: "123", role: "student", name: "María González" },
-  { id: 3, username: "coord1", password: "123", role: "coordinator", name: "Dr. Coordinador" },
-  { id: 4, username: "director1", password: "123", role: "director", name: "Dr. García" },
-  { id: 5, username: "director2", password: "123", role: "director", name: "Dra. Fernández" },
-  { id: 6, username: "jurado1", password: "123", role: "jury", name: "Dra. López" },
-  { id: 7, username: "jurado2", password: "123", role: "jury", name: "Dr. Martínez" }
+  { id: 3, username: "estudiante3", password: "123", role: "student", name: "Carlos Rodríguez" },
+  { id: 10, username: "coord1", password: "123", role: "coordinator", name: "Coordinador García" },
+  { id: 20, username: "director1", password: "123", role: "director", name: "Dr. López" },
+  { id: 21, username: "director2", password: "123", role: "director", name: "Dra. Fernández" },
+  { id: 22, username: "director3", password: "123", role: "director", name: "Dr. García" },
+  { id: 23, username: "director4", password: "123", role: "director", name: "Dra. Ramírez" },
+  { id: 30, username: "jurado1", password: "123", role: "jury", name: "Dra. Martínez" },
+  { id: 31, username: "jurado2", password: "123", role: "jury", name: "Dr. Rodríguez" },
+  { id: 32, username: "jurado3", password: "123", role: "jury", name: "Dr. Sánchez" },
+  { id: 33, username: "jurado4", password: "123", role: "jury", name: "Dra. Torres" }
 ];
 
-const juryMembers = ["Dra. López", "Dr. Martínez", "Dra. Sánchez", "Dr. Ramírez"];
-const directors = ["Dr. García", "Dra. Fernández", "Dr. López"];
+const juryMembers = ["Dra. Martínez", "Dr. Rodríguez", "Dr. Sánchez", "Dra. Torres"];
+const directors = ["Dr. López", "Dra. Fernández", "Dr. García", "Dra. Ramírez"];
 
 let projectIdCounter = projects.length + 1;
+let revisionHistorial = [];
+let revisionIdCounter = 1;
 
 // Utility Functions
 function showToast(message, type = 'success') {
@@ -79,6 +303,23 @@ function showToast(message, type = 'success') {
   setTimeout(() => {
     toast.className = 'toast';
   }, 3000);
+}
+
+function getProjectProgress(project) {
+  let progress = 0;
+  
+  if (project.phase === 'Anteproyecto') {
+    progress = project.deliverables.filter(d => d.status === 'Aprobado').length > 0 ? 25 : 10;
+  } else if (project.phase === 'Desarrollo') {
+    progress = 25 + (project.deliverables.filter(d => d.status === 'Aprobado' && d.phase === 'Desarrollo').length * 15);
+  } else if (project.phase === 'Sustentación') {
+    progress = 75;
+    if (project.evaluations && project.evaluations.length > 0) {
+      progress = 100;
+    }
+  }
+  
+  return Math.min(progress, 100);
 }
 
 function getStatusClass(status) {
@@ -112,6 +353,30 @@ function closeModal(modalId) {
   document.getElementById(modalId).classList.remove('active');
 }
 
+function animateValue(id, start, end, duration) {
+  const element = document.getElementById(id);
+  if (!element) return;
+  
+  const range = end - start;
+  const increment = range / (duration / 16);
+  let current = start;
+  
+  const timer = setInterval(() => {
+    current += increment;
+    if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+      current = end;
+      clearInterval(timer);
+    }
+    element.textContent = Math.floor(current);
+  }, 16);
+}
+
+function calculateAverageGrade(evaluations) {
+  if (!evaluations || evaluations.length === 0) return 'N/A';
+  const sum = evaluations.reduce((acc, ev) => acc + ev.grade, 0);
+  return (sum / evaluations.length).toFixed(1);
+}
+
 // Login
 document.getElementById('loginForm').addEventListener('submit', function(e) {
   e.preventDefault();
@@ -138,6 +403,7 @@ function showDashboard(role) {
     document.getElementById('studentDashboard').classList.add('active');
     document.getElementById('studentName').textContent = currentUser.name;
     loadStudentProjects();
+    loadStudentFeedback();
   } else if (role === 'coordinator') {
     document.getElementById('coordinatorDashboard').classList.add('active');
     document.getElementById('coordinatorName').textContent = currentUser.name;
@@ -169,9 +435,14 @@ function showStudentSection(section) {
   if (section === 'projects') {
     document.getElementById('studentProjects').classList.add('active');
     loadStudentProjects();
+  } else if (section === 'feedback') {
+    document.getElementById('studentFeedback').classList.add('active');
+    loadStudentFeedback();
   }
   
-  event.target.classList.add('active');
+  if (event && event.target) {
+    event.target.classList.add('active');
+  }
 }
 
 function loadStudentProjects() {
@@ -189,15 +460,28 @@ function loadStudentProjects() {
     return;
   }
   
-  container.innerHTML = studentProjects.map(project => `
+  container.innerHTML = studentProjects.map(project => {
+    const progress = getProjectProgress(project);
+    return `
     <div class="project-card">
       <h3 class="project-title">${project.title}</h3>
       <div class="project-meta">
         <div><strong>Fase:</strong> ${project.phase}</div>
         <div><strong>Estado:</strong> <span class="status ${getStatusClass(project.status)}">${project.status}</span></div>
-        <div><strong>Director:</strong> ${project.director}</div>
+        <div><strong>Director:</strong> ${project.director || '<span style="color: var(--color-warning);">Sin asignar</span>'}</div>
+        <div><strong>Jurados:</strong> ${project.jury.length > 0 ? project.jury.join(', ') : 'Sin asignar'}</div>
         <div><strong>Fecha registro:</strong> ${formatDate(project.createdDate)}</div>
         ${project.defenseDate ? `<div><strong>Sustentación:</strong> ${formatDate(project.defenseDate)}</div>` : ''}
+      </div>
+      
+      <div style="margin: 16px 0;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+          <span style="font-size: 12px; color: var(--color-text-secondary);">Progreso del proyecto</span>
+          <span style="font-size: 12px; font-weight: 600; color: var(--color-primary);">${progress}%</span>
+        </div>
+        <div style="width: 100%; height: 8px; background: var(--color-secondary); border-radius: 4px; overflow: hidden;">
+          <div style="width: ${progress}%; height: 100%; background: var(--color-primary); transition: width 0.3s;"></div>
+        </div>
       </div>
       
       ${project.deliverables.length > 0 ? `
@@ -235,7 +519,7 @@ function loadStudentProjects() {
         <button class="btn btn--sm btn--outline" onclick="viewProjectDetails(${project.id})">Ver Detalles</button>
       </div>
     </div>
-  `).join('');
+  `}).join('');
 }
 
 function openRegisterModal() {
@@ -252,7 +536,7 @@ document.getElementById('registerProjectForm').addEventListener('submit', functi
     objectives: document.getElementById('projectObjectives').value,
     authors: document.getElementById('projectAuthors').value,
     student: currentUser.name,
-    director: document.getElementById('projectDirector').value,
+    director: null,
     jury: [],
     phase: 'Anteproyecto',
     status: 'Pendiente',
@@ -308,7 +592,28 @@ document.getElementById('uploadDeliverableForm').addEventListener('submit', func
 function viewProjectDetails(projectId) {
   const project = projects.find(p => p.id === projectId);
   if (project) {
-    alert(`Proyecto: ${project.title}\n\nDescripción: ${project.description}\n\nObjetivos: ${project.objectives}\n\nEstado: ${project.status}\n\nFase: ${project.phase}`);
+    const progress = getProjectProgress(project);
+    const details = `
+PROYECTO: ${project.title}
+
+DESCRIPCIÓN: ${project.description}
+
+OBJETIVOS: ${project.objectives}
+
+ESTADO: ${project.status}
+FASE: ${project.phase}
+PROGRESO: ${progress}%
+
+ESTUDIANTE: ${project.student}
+DIRECTOR: ${project.director || 'Sin asignar'}
+${project.jury.length > 0 ? `JURADOS: ${project.jury.join(', ')}` : 'JURADOS: No asignados'}
+
+ENTREGABLES: ${project.deliverables.length}
+OBSERVACIONES: ${project.observations.length}
+${project.evaluations && project.evaluations.length > 0 ? `CALIFICACIÓN PROMEDIO: ${calculateAverageGrade(project.evaluations)}` : ''}
+${project.defenseDate ? `\nSUSTENTACIÓN: ${formatDate(project.defenseDate)}${project.defenseLocation ? ` en ${project.defenseLocation}` : ''}` : ''}
+    `;
+    alert(details);
   }
 }
 
@@ -334,7 +639,9 @@ function showCoordinatorSection(section) {
     loadCertificates();
   }
   
-  event.target.classList.add('active');
+  if (event && event.target) {
+    event.target.classList.add('active');
+  }
 }
 
 function loadCoordinatorDashboard() {
@@ -342,10 +649,15 @@ function loadCoordinatorDashboard() {
 }
 
 function loadCoordinatorOverview() {
-  document.getElementById('totalProjects').textContent = projects.length;
-  document.getElementById('pendingProjects').textContent = projects.filter(p => p.status === 'Pendiente').length;
-  document.getElementById('reviewProjects').textContent = projects.filter(p => p.status === 'En Revisión').length;
-  document.getElementById('approvedProjects').textContent = projects.filter(p => p.status === 'Aprobado').length;
+  const totalProjects = projects.length;
+  const pendingProjects = projects.filter(p => p.status === 'Pendiente').length;
+  const reviewProjects = projects.filter(p => p.status === 'En Revisión').length;
+  const approvedProjects = projects.filter(p => p.status === 'Aprobado' || p.status === 'Finalizado').length;
+  
+  animateValue('totalProjects', 0, totalProjects, 800);
+  animateValue('pendingProjects', 0, pendingProjects, 800);
+  animateValue('reviewProjects', 0, reviewProjects, 800);
+  animateValue('approvedProjects', 0, approvedProjects, 800);
   
   const recentProjects = projects.slice(-5).reverse();
   document.getElementById('recentProjectsList').innerHTML = `
@@ -354,6 +666,7 @@ function loadCoordinatorOverview() {
         <tr>
           <th>Título</th>
           <th>Estudiante</th>
+          <th>Director</th>
           <th>Estado</th>
           <th>Fase</th>
         </tr>
@@ -363,6 +676,7 @@ function loadCoordinatorOverview() {
           <tr>
             <td>${p.title}</td>
             <td>${p.student}</td>
+            <td>${p.director || '<span style="color: var(--color-warning);">Sin asignar</span>'}</td>
             <td><span class="status ${getStatusClass(p.status)}">${p.status}</span></td>
             <td>${p.phase}</td>
           </tr>
@@ -375,8 +689,14 @@ function loadCoordinatorOverview() {
 function loadAllProjects() {
   renderProjectsTable(projects);
   
-  document.getElementById('searchProjects').addEventListener('input', filterProjects);
-  document.getElementById('filterStatus').addEventListener('change', filterProjects);
+  const searchInput = document.getElementById('searchProjects');
+  const filterSelect = document.getElementById('filterStatus');
+  
+  searchInput.removeEventListener('input', filterProjects);
+  filterSelect.removeEventListener('change', filterProjects);
+  
+  searchInput.addEventListener('input', filterProjects);
+  filterSelect.addEventListener('change', filterProjects);
 }
 
 function filterProjects() {
@@ -421,12 +741,16 @@ function renderProjectsTable(projectsList) {
             <td>${p.id}</td>
             <td>${p.title}</td>
             <td>${p.student}</td>
-            <td>${p.director}</td>
+            <td>${p.director || '<span style="color: var(--color-warning);">Sin asignar</span>'}</td>
             <td>${p.phase}</td>
             <td><span class="status ${getStatusClass(p.status)}">${p.status}</span></td>
             <td>${p.jury.length > 0 ? p.jury.join(', ') : 'Sin asignar'}</td>
             <td>
-              <button class="btn btn--sm btn--outline" onclick="viewProjectDetails(${p.id})">Ver</button>
+              <div style="display: flex; gap: 4px; flex-wrap: wrap;">
+                <button class="btn btn--sm btn--primary" onclick="openAssignDirectorModal(${p.id})" title="Asignar/Cambiar Director">${p.director ? 'Cambiar' : 'Asignar'} Dir.</button>
+                ${p.director && p.jury.length === 0 ? `<button class="btn btn--sm btn--outline" onclick="openAssignJuryModal(${p.id})" title="Asignar Jurados">Asig. Jur.</button>` : ''}
+                <button class="btn btn--sm btn--outline" onclick="viewProjectDetails(${p.id})">Ver</button>
+              </div>
             </td>
           </tr>
         `).join('')}
@@ -434,6 +758,36 @@ function renderProjectsTable(projectsList) {
     </table>
   `;
 }
+
+function openAssignDirectorModal(projectId) {
+  document.getElementById('assignDirectorProjectId').value = projectId;
+  const project = projects.find(p => p.id === projectId);
+  document.getElementById('directorSelect').value = project && project.director ? project.director : '';
+  openModal('assignDirectorModal');
+}
+
+document.getElementById('assignDirectorForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const projectId = parseInt(document.getElementById('assignDirectorProjectId').value);
+  const project = projects.find(p => p.id === projectId);
+  const selectedDirector = document.getElementById('directorSelect').value;
+  
+  if (project && selectedDirector) {
+    const oldDirector = project.director;
+    project.director = selectedDirector;
+    
+    closeModal('assignDirectorModal');
+    loadAllProjects();
+    loadCoordinatorOverview();
+    
+    if (oldDirector) {
+      showToast(`Director cambiado de ${oldDirector} a ${selectedDirector}`);
+    } else {
+      showToast(`Director ${selectedDirector} asignado exitosamente`);
+    }
+  }
+});
 
 function loadAssignJury() {
   const projectsWithoutJury = projects.filter(p => p.jury.length === 0);
@@ -451,11 +805,11 @@ function loadAssignJury() {
           <h3 class="project-title">${p.title}</h3>
           <div class="project-meta">
             <div><strong>Estudiante:</strong> ${p.student}</div>
-            <div><strong>Director:</strong> ${p.director}</div>
+            <div><strong>Director:</strong> ${p.director || '<span style="color: var(--color-warning);">Sin asignar</span>'}</div>
             <div><strong>Estado:</strong> <span class="status ${getStatusClass(p.status)}">${p.status}</span></div>
           </div>
           <div class="project-actions">
-            <button class="btn btn--sm btn--primary" onclick="openAssignJuryModal(${p.id})">Asignar Jurados</button>
+            ${!p.director ? `<button class="btn btn--sm btn--outline" onclick="openAssignDirectorModal(${p.id})">Asignar Director Primero</button>` : `<button class="btn btn--sm btn--primary" onclick="openAssignJuryModal(${p.id})">Asignar Jurados</button>`}
           </div>
         </div>
       `).join('')}
@@ -487,6 +841,7 @@ document.getElementById('assignJuryForm').addEventListener('submit', function(e)
     project.jury = selectedJury;
     closeModal('assignJuryModal');
     loadAssignJury();
+    loadAllProjects();
     showToast('Jurados asignados exitosamente');
   }
 });
@@ -507,6 +862,7 @@ function loadScheduleDefense() {
           <h3 class="project-title">${p.title}</h3>
           <div class="project-meta">
             <div><strong>Estudiante:</strong> ${p.student}</div>
+            <div><strong>Director:</strong> ${p.director}</div>
             <div><strong>Jurados:</strong> ${p.jury.join(', ')}</div>
             <div><strong>Estado:</strong> <span class="status ${getStatusClass(p.status)}">${p.status}</span></div>
           </div>
@@ -569,24 +925,19 @@ function loadCertificates() {
   `;
 }
 
-function calculateAverageGrade(evaluations) {
-  if (!evaluations || evaluations.length === 0) return 'N/A';
-  const sum = evaluations.reduce((acc, ev) => acc + ev.grade, 0);
-  return (sum / evaluations.length).toFixed(1);
-}
-
 function generateCertificate(projectId) {
   const project = projects.find(p => p.id === projectId);
   if (!project) return;
   
   const avgGrade = calculateAverageGrade(project.evaluations);
-  const today = new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+  const defenseInfo = project.defenseDate ? formatDate(project.defenseDate) : 'fecha por programar';
+  const location = project.lugar || project.defenseLocation || 'las instalaciones de la universidad';
   
   const certificateContent = `
     <h2>ACTA DE EVALUACIÓN DE PROYECTO DE GRADO</h2>
     <p style="text-align: center; margin-bottom: 32px;">No. ${project.id.toString().padStart(4, '0')}</p>
     
-    <p>El día ${formatDate(project.defenseDate)}, en ${project.defenseLocation || 'las instalaciones de la universidad'}, 
+    <p>El día ${defenseInfo}, en ${location}, 
     se llevó a cabo la sustentación del proyecto de grado titulado:</p>
     
     <p style="text-align: center; font-weight: bold; margin: 24px 0;">${project.title.toUpperCase()}</p>
@@ -596,14 +947,20 @@ function generateCertificate(projectId) {
     <p><strong>Jurados evaluadores:</strong> ${project.jury.join(', ')}</p>
     
     <div style="margin: 32px 0;">
-      <p><strong>EVALUACIONES:</strong></p>
+      <p><strong>EVALUACIONES DETALLADAS:</strong></p>
       ${project.evaluations.map(ev => `
-        <p>• ${ev.evaluator}: ${ev.grade}/100 - ${ev.comments}</p>
+        <div style="margin: 16px 0; padding: 12px; background: rgba(0,0,0,0.05); border-left: 3px solid #000;">
+          <p style="font-weight: bold;">${ev.evaluator}: ${ev.grade}/100</p>
+          <p style="margin: 8px 0;"><strong>Comentarios:</strong> ${ev.comments}</p>
+          ${ev.fortalezas ? `<p style="margin: 4px 0;"><strong>Fortalezas:</strong> ${ev.fortalezas}</p>` : ''}
+          ${ev.mejoras ? `<p style="margin: 4px 0;"><strong>Mejoras:</strong> ${ev.mejoras}</p>` : ''}
+          ${ev.recomendaciones ? `<p style="margin: 4px 0;"><strong>Recomendaciones:</strong> ${ev.recomendaciones}</p>` : ''}
+        </div>
       `).join('')}
     </div>
     
-    <p><strong>Calificación final:</strong> ${avgGrade}/100</p>
-    <p><strong>Resultado:</strong> ${parseFloat(avgGrade) >= 70 ? 'APROBADO' : 'NO APROBADO'}</p>
+    <p style="font-size: 18px; font-weight: bold; margin: 24px 0;"><strong>Calificación final:</strong> ${avgGrade}/100</p>
+    <p style="font-size: 16px; font-weight: bold;"><strong>Resultado:</strong> ${parseFloat(avgGrade) >= 70 ? 'APROBADO' : 'NO APROBADO'}</p>
     
     <p style="margin-top: 48px;">Para constancia se firma el acta en la fecha mencionada.</p>
     
@@ -645,9 +1002,17 @@ function showDirectorSection(section) {
   } else if (section === 'review') {
     document.getElementById('directorReview').classList.add('active');
     loadDirectorReview();
+  } else if (section === 'observations') {
+    document.getElementById('directorObservations').classList.add('active');
+    loadDirectorObservationsForm();
+  } else if (section === 'history') {
+    document.getElementById('directorHistory').classList.add('active');
+    loadDirectorHistory();
   }
   
-  event.target.classList.add('active');
+  if (event && event.target) {
+    event.target.classList.add('active');
+  }
 }
 
 function loadDirectorProjects() {
@@ -692,77 +1057,395 @@ function loadDirectorReview() {
     <div class="card" style="margin-bottom: 24px;">
       <div class="card__body">
         <h3>${project.title}</h3>
-        <p style="color: var(--color-text-secondary); margin-bottom: 16px;">Estudiante: ${project.student}</p>
+        <p style="color: var(--color-text-secondary); margin-bottom: 16px;">Estudiante: ${project.student} | Fase: ${project.phase}</p>
         
         <div class="deliverables-list">
-          <strong>Entregables:</strong>
-          ${project.deliverables.map(d => `
-            <div class="deliverable-item">
-              <div class="deliverable-info">
-                <div class="deliverable-name">${d.name}</div>
-                <div class="deliverable-meta">
-                  ${d.phase} - ${d.fileName} - ${formatDate(d.uploadDate)}
-                </div>
+          <h4 style="margin-bottom: 12px;">Entregables por Fase:</h4>
+          ${['Anteproyecto', 'Desarrollo', 'Sustentación'].map(phase => {
+            const phaseDeliverables = project.deliverables.filter(d => d.phase === phase);
+            if (phaseDeliverables.length === 0) return '';
+            return `
+              <div style="margin-bottom: 16px;">
+                <strong style="color: var(--color-primary);">${phase}:</strong>
+                ${phaseDeliverables.map(d => `
+                  <div class="deliverable-item">
+                    <div class="deliverable-info">
+                      <div class="deliverable-name">📄 ${d.name}</div>
+                      <div class="deliverable-meta">
+                        Archivo: ${d.fileName} | Cargado: ${formatDate(d.uploadDate)}
+                      </div>
+                    </div>
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                      <span class="status ${getStatusClass(d.status || 'Pendiente')}">${d.status || 'Pendiente'}</span>
+                      <button class="btn btn--sm btn--primary" onclick="openReviewDeliverableModal(${project.id}, ${d.id})">Revisar</button>
+                    </div>
+                  </div>
+                `).join('')}
               </div>
-              <div style="display: flex; gap: 8px; align-items: center;">
-                <span class="status ${getStatusClass(d.status || 'Pendiente')}">${d.status || 'Pendiente'}</span>
-                ${!d.status || d.status === 'Pendiente' ? `
-                  <button class="btn btn--sm btn--primary" onclick="openObservationModal(${project.id}, ${d.id})">Revisar</button>
-                ` : ''}
-              </div>
-            </div>
-          `).join('')}
+            `;
+          }).join('')}
         </div>
       </div>
     </div>
   `).join('');
 }
 
-function openObservationModal(projectId, deliverableId) {
-  document.getElementById('observationProjectId').value = projectId;
-  document.getElementById('observationDeliverableId').value = deliverableId;
-  openModal('observationModal');
+function openReviewDeliverableModal(projectId, deliverableId) {
+  const project = projects.find(p => p.id === projectId);
+  const deliverable = project?.deliverables.find(d => d.id === deliverableId);
+  
+  if (!project || !deliverable) return;
+  
+  const modalBody = document.getElementById('directorReviewDeliverableBody');
+  
+  // Contenido simulado del archivo
+  const filePreview = `
+Título: ${deliverable.name}
+Proyecto: ${project.title}
+Estudiante: ${project.student}
+Fase: ${deliverable.phase}
+
+==== CONTENIDO DEL DOCUMENTO ====
+
+Este es un preview simulado del archivo "${deliverable.fileName}".
+
+El documento contiene:
+- Introducción al tema
+- Marco teórico desarrollado
+- Objetivos generales y específicos
+- Metodología propuesta
+- Referencias bibliográficas
+
+[El contenido completo del documento se mostraría aquí en un sistema real]
+  `;
+  
+  const existingComments = deliverable.comentariosDirector || [];
+  
+  modalBody.innerHTML = `
+    <div class="deliverable-info-section">
+      <h4>Información del Entregable</h4>
+      <p><strong>Nombre:</strong> ${deliverable.name}</p>
+      <p><strong>Archivo:</strong> ${deliverable.fileName}</p>
+      <p><strong>Fase:</strong> ${deliverable.phase}</p>
+      <p><strong>Fecha de carga:</strong> ${formatDate(deliverable.uploadDate)}</p>
+      <p><strong>Estado actual:</strong> <span class="status ${getStatusClass(deliverable.status || 'Pendiente')}">${deliverable.status || 'Pendiente'}</span></p>
+    </div>
+    
+    <div class="deliverable-info-section">
+      <h4>Preview del Archivo</h4>
+      <div class="deliverable-preview">${filePreview}</div>
+      <button class="btn btn--sm btn--outline" onclick="showToast('Descarga simulada de ${deliverable.fileName}')">Descargar Archivo</button>
+    </div>
+    
+    ${existingComments.length > 0 ? `
+      <div class="deliverable-info-section">
+        <h4>Comentarios Anteriores</h4>
+        ${existingComments.map(c => `
+          <div class="observation-item">
+            <div class="observation-header">
+              <span class="observation-author">${currentUser.name}</span>
+              <span class="observation-date">${formatDate(c.fecha)}</span>
+            </div>
+            <div class="observation-text"><strong>Comentario:</strong> ${c.contenido}</div>
+            ${c.sugerencias ? `<div class="observation-text" style="margin-top: 8px;"><strong>Sugerencias:</strong> ${c.sugerencias}</div>` : ''}
+          </div>
+        `).join('')}
+      </div>
+    ` : ''}
+    
+    <form id="reviewDeliverableForm">
+      <div class="form-group">
+        <label class="form-label">Comentarios / Observaciones *</label>
+        <textarea id="reviewComments" class="form-control" rows="5" placeholder="Escriba sus comentarios sobre el entregable..." required></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label">Sugerencias de Mejora (Opcional)</label>
+        <textarea id="reviewSuggestions" class="form-control" rows="3" placeholder="Sugerencias específicas para mejorar el trabajo..."></textarea>
+      </div>
+      
+      <div class="action-buttons">
+        <button type="button" class="btn btn--success" onclick="submitReview(${projectId}, ${deliverableId}, 'Aprobado')">✔ Aprobar</button>
+        <button type="button" class="btn btn--warning" onclick="submitReview(${projectId}, ${deliverableId}, 'Pendiente')">🔄 Solicitar Ajustes</button>
+        <button type="button" class="btn btn--danger" onclick="submitReview(${projectId}, ${deliverableId}, 'Rechazado')">✖ Rechazar</button>
+        <button type="button" class="btn btn--outline" onclick="saveObservationOnly(${projectId}, ${deliverableId})">💾 Guardar Observaciones</button>
+      </div>
+    </form>
+  `;
+  
+  openModal('reviewDeliverableModal');
 }
 
-document.getElementById('addObservationForm').addEventListener('submit', function(e) {
-  e.preventDefault();
+function submitReview(projectId, deliverableId, newStatus) {
+  const comments = document.getElementById('reviewComments').value;
+  const suggestions = document.getElementById('reviewSuggestions').value;
   
-  const projectId = parseInt(document.getElementById('observationProjectId').value);
-  const deliverableId = parseInt(document.getElementById('observationDeliverableId').value);
+  if (!comments.trim()) {
+    showToast('Debe ingresar comentarios', 'error');
+    return;
+  }
+  
+  if (newStatus === 'Rechazado' && !comments.trim()) {
+    showToast('Debe especificar el motivo del rechazo', 'error');
+    return;
+  }
+  
   const project = projects.find(p => p.id === projectId);
+  const deliverable = project?.deliverables.find(d => d.id === deliverableId);
   
-  if (project) {
-    const deliverable = project.deliverables.find(d => d.id === deliverableId);
-    const action = document.getElementById('observationAction').value;
+  if (!project || !deliverable) return;
+  
+  // Inicializar comentarios si no existen
+  if (!deliverable.comentariosDirector) {
+    deliverable.comentariosDirector = [];
+  }
+  
+  // Agregar comentario
+  const newComment = {
+    contenido: comments,
+    fecha: new Date().toISOString(),
+    sugerencias: suggestions,
+    estado: newStatus
+  };
+  
+  deliverable.comentariosDirector.push(newComment);
+  deliverable.status = newStatus;
+  
+  // Actualizar estado del proyecto
+  if (newStatus === 'Aprobado') {
+    const allApproved = project.deliverables.every(d => d.status === 'Aprobado');
+    if (allApproved) {
+      project.status = 'Aprobado';
+    }
+  } else if (newStatus === 'Rechazado') {
+    project.status = 'En Revisión';
+  }
+  
+  // Registrar en historial
+  revisionHistorial.push({
+    id: revisionIdCounter++,
+    projectId: projectId,
+    projectTitle: project.title,
+    deliverableId: deliverableId,
+    deliverableName: deliverable.name,
+    accion: newStatus,
+    observacion: comments,
+    fecha: new Date().toISOString(),
+    director: currentUser.name
+  });
+  
+  closeModal('reviewDeliverableModal');
+  loadDirectorReview();
+  
+  const actionText = newStatus === 'Aprobado' ? 'aprobado' : (newStatus === 'Rechazado' ? 'rechazado' : 'marcado para ajustes');
+  showToast(`Entregable ${actionText} exitosamente`);
+}
+
+function saveObservationOnly(projectId, deliverableId) {
+  const comments = document.getElementById('reviewComments').value;
+  const suggestions = document.getElementById('reviewSuggestions').value;
+  
+  if (!comments.trim()) {
+    showToast('Debe ingresar comentarios', 'error');
+    return;
+  }
+  
+  const project = projects.find(p => p.id === projectId);
+  const deliverable = project?.deliverables.find(d => d.id === deliverableId);
+  
+  if (!project || !deliverable) return;
+  
+  if (!deliverable.comentariosDirector) {
+    deliverable.comentariosDirector = [];
+  }
+  
+  deliverable.comentariosDirector.push({
+    contenido: comments,
+    fecha: new Date().toISOString(),
+    sugerencias: suggestions,
+    estado: 'Comentario guardado'
+  });
+  
+  // Registrar en historial
+  revisionHistorial.push({
+    id: revisionIdCounter++,
+    projectId: projectId,
+    projectTitle: project.title,
+    deliverableId: deliverableId,
+    deliverableName: deliverable.name,
+    accion: 'Comentario',
+    observacion: comments,
+    fecha: new Date().toISOString(),
+    director: currentUser.name
+  });
+  
+  closeModal('reviewDeliverableModal');
+  showToast('Observaciones guardadas exitosamente');
+}
+
+function loadDirectorObservationsForm() {
+  const directorProjects = projects.filter(p => p.director === currentUser.name);
+  const container = document.getElementById('directorObservationsForm');
+  
+  if (directorProjects.length === 0) {
+    container.innerHTML = '<div class="empty-state"><div class="empty-state-text">No tienes proyectos asignados</div></div>';
+    return;
+  }
+  
+  container.innerHTML = `
+    <div class="card">
+      <div class="card__body">
+        <p style="color: var(--color-text-secondary); margin-bottom: 24px;">
+          Emita observaciones generales sobre el proyecto completo. Estas observaciones serán visibles para el estudiante.
+        </p>
+        
+        <form id="emitObservationForm">
+          <div class="form-group">
+            <label class="form-label">Seleccionar Proyecto *</label>
+            <select id="obsProjectSelect" class="form-control" required>
+              <option value="">Seleccione un proyecto</option>
+              ${directorProjects.map(p => `<option value="${p.id}">${p.title} - ${p.student}</option>`).join('')}
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Título de la Observación *</label>
+            <input type="text" id="obsTitleInput" class="form-control" placeholder="Ej: Revisar metodología" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Contenido / Descripción Detallada *</label>
+            <textarea id="obsContentInput" class="form-control" rows="5" placeholder="Describa la observación en detalle..." required></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Tipo de Observación *</label>
+            <select id="obsTypeSelect" class="form-control" required>
+              <option value="General">General</option>
+              <option value="Marco Teórico">Marco Teórico</option>
+              <option value="Objetivos">Objetivos</option>
+              <option value="Metodología">Metodología</option>
+              <option value="Resultados">Resultados</option>
+              <option value="Conclusiones">Conclusiones</option>
+              <option value="Documentación">Documentación</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Prioridad *</label>
+            <select id="obsPrioritySelect" class="form-control" required>
+              <option value="Baja">Baja</option>
+              <option value="Media">Media</option>
+              <option value="Alta">Alta</option>
+            </select>
+          </div>
+          
+          <div style="display: flex; gap: 12px; margin-top: 24px;">
+            <button type="submit" class="btn btn--primary">Enviar Observación</button>
+            <button type="reset" class="btn btn--outline">Limpiar Formulario</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  `;
+  
+  document.getElementById('emitObservationForm').addEventListener('submit', function(e) {
+    e.preventDefault();
     
-    const observation = {
+    const projectId = parseInt(document.getElementById('obsProjectSelect').value);
+    const project = projects.find(p => p.id === projectId);
+    
+    if (!project) return;
+    
+    const newObservation = {
       id: project.observations.length + 1,
-      author: currentUser.name,
-      text: document.getElementById('observationText').value,
-      date: new Date().toISOString(),
-      action: action
+      titulo: document.getElementById('obsTitleInput').value,
+      contenido: document.getElementById('obsContentInput').value,
+      tipo: document.getElementById('obsTypeSelect').value,
+      prioridad: document.getElementById('obsPrioritySelect').value,
+      fecha: new Date().toISOString(),
+      emisor: currentUser.name
     };
     
-    project.observations.push(observation);
+    project.observations.push(newObservation);
     
-    if (deliverable) {
-      if (action === 'approve') {
-        deliverable.status = 'Aprobado';
-        project.status = 'Aprobado';
-      } else if (action === 'reject') {
-        deliverable.status = 'Rechazado';
-        project.status = 'Rechazado';
-      } else {
-        deliverable.status = 'En Revisión';
-      }
-    }
+    // Registrar en historial
+    revisionHistorial.push({
+      id: revisionIdCounter++,
+      projectId: projectId,
+      projectTitle: project.title,
+      deliverableId: null,
+      deliverableName: 'Observación General',
+      accion: 'Observación General',
+      observacion: newObservation.titulo + ': ' + newObservation.contenido,
+      fecha: new Date().toISOString(),
+      director: currentUser.name
+    });
     
-    closeModal('observationModal');
     this.reset();
-    loadDirectorReview();
-    showToast('Observación registrada exitosamente');
+    showToast('Observación enviada exitosamente');
+  });
+}
+
+function loadDirectorHistory() {
+  const directorHistory = revisionHistorial.filter(r => r.director === currentUser.name);
+  const container = document.getElementById('directorHistoryList');
+  
+  if (directorHistory.length === 0) {
+    container.innerHTML = '<div class="empty-state"><div class="empty-state-text">No hay revisiones registradas aún</div></div>';
+    return;
   }
-});
+  
+  const sortedHistory = directorHistory.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
+  
+  container.innerHTML = `
+    <div class="card">
+      <div class="card__body" style="padding: 0;">
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Proyecto</th>
+              <th>Entregable</th>
+              <th>Acción</th>
+              <th>Observación</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${sortedHistory.map(r => `
+              <tr onclick="showHistoryDetail(${r.id})">
+                <td>${formatDate(r.fecha)}</td>
+                <td>${r.projectTitle}</td>
+                <td>${r.deliverableName}</td>
+                <td><span class="action-badge action-badge--${r.accion.toLowerCase().replace(' ', '')}">${r.accion}</span></td>
+                <td>${r.observacion.substring(0, 50)}${r.observacion.length > 50 ? '...' : ''}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+}
+
+function showHistoryDetail(historyId) {
+  const historyItem = revisionHistorial.find(r => r.id === historyId);
+  if (!historyItem) return;
+  
+  const detailText = `
+DETALLE DE REVISIÓN
+
+Fecha: ${formatDate(historyItem.fecha)}
+Proyecto: ${historyItem.projectTitle}
+Entregable: ${historyItem.deliverableName}
+Acción: ${historyItem.accion}
+
+Observación completa:
+${historyItem.observacion}
+  `;
+  
+  alert(detailText);
+}
 
 // Jury Functions
 function showJurySection(section) {
@@ -780,7 +1463,9 @@ function showJurySection(section) {
     loadJuryHistory();
   }
   
-  event.target.classList.add('active');
+  if (event && event.target) {
+    event.target.classList.add('active');
+  }
 }
 
 function loadJuryProjects() {
@@ -814,12 +1499,12 @@ function loadJuryProjects() {
 }
 
 function loadJuryEvaluate() {
-  const juryProjects = projects.filter(p => 
-    p.jury.includes(currentUser.name) && 
-    p.defenseDate && 
-    new Date(p.defenseDate) <= new Date() &&
-    (!p.evaluations || !p.evaluations.find(ev => ev.evaluator === currentUser.name))
-  );
+  const juryProjects = projects.filter(p => {
+    const isJury = p.jury.includes(currentUser.name);
+    const hasDeliverables = p.deliverables && p.deliverables.length > 0;
+    const notEvaluated = !p.evaluations || !p.evaluations.find(ev => ev.evaluator === currentUser.name);
+    return isJury && hasDeliverables && notEvaluated;
+  });
   
   const container = document.getElementById('juryEvaluateList');
   
@@ -836,10 +1521,14 @@ function loadJuryEvaluate() {
           <div class="project-meta">
             <div><strong>Estudiante:</strong> ${p.student}</div>
             <div><strong>Director:</strong> ${p.director}</div>
-            <div><strong>Sustentación:</strong> ${formatDate(p.defenseDate)}</div>
+            <div><strong>Fase:</strong> ${p.phase}</div>
+            ${p.defenseDate ? `<div><strong>Sustentación:</strong> ${formatDate(p.defenseDate)}</div>` : ''}
+            <div><strong>Entregables:</strong> ${p.deliverables.length} documentos</div>
+            ${p.evaluations && p.evaluations.length > 0 ? `<div style="color: var(--color-info);"><strong>Evaluaciones:</strong> ${p.evaluations.length}/${p.jury.length} completadas</div>` : ''}
           </div>
           <div class="project-actions">
-            <button class="btn btn--sm btn--primary" onclick="openEvaluationModal(${p.id})">Evaluar Proyecto</button>
+            <button class="btn btn--sm btn--outline" onclick="viewProjectDeliverablesForJury(${p.id})">Ver Entregables</button>
+            <button class="btn btn--sm btn--primary" onclick="openEvaluationModal(${p.id})">Calificar Proyecto</button>
           </div>
         </div>
       `).join('')}
@@ -868,6 +1557,9 @@ document.getElementById('evaluateProjectForm').addEventListener('submit', functi
       evaluator: currentUser.name,
       grade: parseInt(document.getElementById('evaluationGrade').value),
       comments: document.getElementById('evaluationComments').value,
+      fortalezas: document.getElementById('evaluationStrengths').value,
+      mejoras: document.getElementById('evaluationImprovements').value,
+      recomendaciones: document.getElementById('evaluationRecommendations').value,
       date: new Date().toISOString()
     };
     
@@ -884,6 +1576,33 @@ document.getElementById('evaluateProjectForm').addEventListener('submit', functi
     showToast('Evaluación registrada exitosamente');
   }
 });
+
+function viewProjectDeliverablesForJury(projectId) {
+  const project = projects.find(p => p.id === projectId);
+  if (!project) return;
+  
+  let deliverablesInfo = `PROYECTO: ${project.title}\n\nENTREGABLES:\n\n`;
+  
+  if (project.deliverables.length === 0) {
+    deliverablesInfo += 'No hay entregables cargados a\u00fan.\n';
+  } else {
+    project.deliverables.forEach((d, index) => {
+      deliverablesInfo += `${index + 1}. ${d.name}\n`;
+      deliverablesInfo += `   Fase: ${d.phase}\n`;
+      deliverablesInfo += `   Archivo: ${d.fileName}\n`;
+      deliverablesInfo += `   Fecha de carga: ${formatDate(d.uploadDate)}\n`;
+      deliverablesInfo += `   Estado: ${d.status || 'Pendiente'}\n`;
+      
+      if (d.comentariosDirector && d.comentariosDirector.length > 0) {
+        deliverablesInfo += `   Comentarios del director: ${d.comentariosDirector[d.comentariosDirector.length - 1].contenido}\n`;
+      }
+      
+      deliverablesInfo += '\n';
+    });
+  }
+  
+  alert(deliverablesInfo);
+}
 
 function loadJuryHistory() {
   const evaluatedProjects = projects.filter(p => 
